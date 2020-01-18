@@ -5,12 +5,11 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
-	"os/user"
 	"path"
 	"path/filepath"
 	"strings"
 	"time"
-
+	"github.com/kardianos/osext"
 	"github.com/xrash/smetrics"
 )
 
@@ -105,8 +104,9 @@ func (t *Tools) readMap() error {
 }
 
 func dir() string {
-	usr, _ := user.Current()
-	return path.Join(usr.HomeDir, ".arduino-create")
+	src, _ := osext.Executable()
+	dest := filepath.Dir(src)
+	return path.Join(dest, "arduino-create-files")
 }
 
 // createDir creates the directory where the tools will be stored

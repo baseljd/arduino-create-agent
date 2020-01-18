@@ -102,9 +102,10 @@ func getConfigs() []ConfigIni {
 func setupSysTrayReal() {
 
 	systray.SetIcon(icon.GetIcon())
-	mUrl := systray.AddMenuItem("Go to Arduino Create", "Arduino Create")
-	mDebug := systray.AddMenuItem("Open debug console", "Debug console")
-	menuVer := systray.AddMenuItem("Agent version "+version+"-"+git_revision, "")
+	mUrl := systray.AddMenuItem("Open Cherpa", "Open Cherpa")
+	mDebug := systray.AddMenuItem("Open Debug", "Open Debug")
+	mDocs := systray.AddMenuItem("Open Docs", "Open Docs")
+	menuVer := systray.AddMenuItem("Agent version "+version+""+git_revision, "")
 	mPause := systray.AddMenuItem("Pause Plugin", "")
 	var mConfigCheckbox []*systray.MenuItem
 
@@ -158,7 +159,15 @@ func setupSysTrayReal() {
 		for {
 			<-mDebug.ClickedCh
 			logAction("log on")
-			open.Start("http://127.0.0.1" + port)
+			open.Start("https://learn.cherpa.io/debug-arduino")
+		}
+	}()
+
+	go func() {
+		for {
+			<-mDocs.ClickedCh
+			logAction("log on")
+			open.Start("https://docs.cherpa.io")
 		}
 	}()
 
@@ -166,7 +175,7 @@ func setupSysTrayReal() {
 	go func() {
 		for {
 			<-mUrl.ClickedCh
-			open.Start("https://create.arduino.cc")
+			open.Start("https://learn.cherpa.io/")
 		}
 	}()
 }

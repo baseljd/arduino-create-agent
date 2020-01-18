@@ -1,7 +1,16 @@
 [![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
 
-arduino-create-agent
+cherpa-arduino-create-agent
 ====================
+
+This agent is a modification of the original Arduino Create Agent for [Cherpa](https://learn.cherpa.io)
+
+ - The agent uses it's current location for all the files "/arduino-agent-files" instead of User specific files (easier for remote installs for schools)
+ - The agent requires no installation (installing the certificate is needed)
+ - The agent has a custom menu for Cherpa's online platform
+ - The agent uses a modified logo (Cherpa's Logo)
+
+![Cherpa Platform Screenshot](https://s3-us-west-2.amazonaws.com/cherpa01-static/media/github/cherpa-screenshot.png)
 
 
 ## GOA 2 refactoring

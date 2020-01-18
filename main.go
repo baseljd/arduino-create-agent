@@ -7,7 +7,6 @@ import (
 	"encoding/json"
 	"flag"
 	"os"
-	"os/user"
 	"path/filepath"
 	"runtime/debug"
 	"strconv"
@@ -148,8 +147,7 @@ func loop() {
 	}
 
 	// Instantiate Tools
-	usr, _ := user.Current()
-	directory := filepath.Join(usr.HomeDir, ".arduino-create")
+	directory := filepath.Join(dest, "arduino-create-files")
 	Tools = tools.Tools{
 		Directory: directory,
 		IndexURL:  *indexURL,
@@ -253,7 +251,7 @@ func loop() {
 
 	extraOrigins := []string{
 		"https://create.arduino.cc",
-		"https://create-dev.arduino.cc", "https://create-intel.arduino.cc",
+		"https://create-dev.arduino.cc", "https://create-intel.arduino.cc","https://learn.cherpa.io"
 	}
 
 	for i := 8990; i < 9001; i++ {
